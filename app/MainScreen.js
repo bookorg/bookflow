@@ -6,7 +6,7 @@ export default MainScreen = ( { navigation } ) => {
   return(
     <View style={styles.container}>
       <Text>Welcome to the MainScreen</Text>
-      <Button onPress={() => navigation.navigate('BookList')} title="go to BookList" />
+      <Button onPress={() => navigation.navigate('TabScreen')} title="go to TabScreen" />
     </View>
   )
 }
