@@ -5,9 +5,11 @@ import BookSearch from '../components/BookSearch.js';
 import Profile from '../components/Profile.js';
 import Friends from '../components/Friends.js';
 import Basket from '../components/Basket.js';
+import MyBooks from '../components/MyBooks.js';
 
 const Tabs = {
   BookSearch: BookSearch,
+  MyBooks: MyBooks,
   Profile: Profile,
   Friends: Friends,
   Basket: Basket,
@@ -20,6 +22,8 @@ const TabConfig = {
       let iconName;
       if (routeName === 'BookSearch') {
         iconName = `search`;
+      } else if (routeName === 'MyBooks') {
+        iconName = `library-books`;
       } else if (routeName === 'Profile') {
         iconName = `person`;
       } else if (routeName === 'Friends') {
