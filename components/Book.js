@@ -9,3 +9,4 @@ export default Book = ({ details }) => (
   </View>
 )
 
+
