@@ -6,6 +6,7 @@ import Profile from '../components/Profile.js';
 import Friends from '../components/Friends.js';
 import Basket from '../components/Basket.js';
 import MyBooks from '../components/MyBooks.js';
+import BookUpload from '../components/BookUpload.js';
 
 const Tabs = {
   BookSearch: BookSearch,
@@ -13,6 +14,7 @@ const Tabs = {
   Profile: Profile,
   Friends: Friends,
   Basket: Basket,
+  Upload: BookUpload,
 }
 
 const TabConfig = {
@@ -30,9 +32,11 @@ const TabConfig = {
         iconName = `people`;
       } else if (routeName === 'Basket') {
         iconName = `shopping-basket`;
+      } else if (routeName === 'Upload') {
+        iconName = `cloud-upload`;
       } 
 
-      return <Icon name={iconName} size={25} color={tintColor} />;
+      return <Icon name={iconName} size={20} color={tintColor} />;
     },
   }),
   tabBarOptions: {
