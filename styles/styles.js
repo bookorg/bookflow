@@ -8,4 +8,8 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bookEntry: {
+    padding: 10,
+    backgroundColor: '#eff',
+  }
 });
