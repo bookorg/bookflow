@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
+    fontSize: 16,
     color: '#fff',
     padding: 10,
   },
@@ -28,13 +29,20 @@ const styles = StyleSheet.create({
 });
 
 class BookDetail extends React.Component {
-  quality = {1: 'Low', 2: 'Medium', 3: 'High'};
+  static navigationOptions = ({ navigation }) => {
+    const {state} = navigation;
+    return {
+      title: 'Book Detail',
+    };
+  };
+
+  quality = {1: 'Low Quality', 2: 'Medium Quality', 3: 'High Quality'};
   render() {
     const bookDetail = this.props.navigation.getParam('detail', '')
     return (
       <ScrollView>
         <View style={styles.container}>
-        <Text style={styles.title}>{bookDetail.title} ({this.quality[bookDetail.quality]} Quality) </Text>
+        <Text style={styles.title}>{bookDetail.title} ({this.quality[bookDetail.quality]})</Text>
         <Image
           style={styles.image}
           source={{ uri: bookDetail.image }}>

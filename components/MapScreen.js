@@ -1,15 +1,26 @@
 import React from 'react';
 import { MapView } from 'expo';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import UserPreview from './UserPreview';
 
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+})
+
 class MapScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    const {state} = navigation;
+    return {
+      title: 'Users Network',
+    };
+  };
+
   render() {
     
     return (
       <MapView
-        style={{ flex: 1 }}
+        style={styles.container}
         initialRegion={{
           latitude: 10.762622,
           longitude: 106.660172,
@@ -23,7 +34,7 @@ class MapScreen extends React.Component {
             coordinate={{latitude: user.location.latitude, longitude: user.location.longitude}}
           >
           {/* <TouchableHighlight onPress={() => this.props.navigation.navigate('UserPreview')}> */}
-          <MapView.Callout>
+          <MapView.Callout style={styles.callout}>
             
             <UserPreview user={user} />
           {/* </TouchableHighlight> */}

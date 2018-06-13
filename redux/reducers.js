@@ -7,7 +7,7 @@ const initialState = {
     {
       id: 1,
       username: 'An',
-      phoneNumber: '+84989898938',
+      phoneNumber: '+84968234838',
       location: {
         latitude: 10.762622,
         longitude: 106.660172

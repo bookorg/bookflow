@@ -1,17 +1,33 @@
 import React from 'react';
-import { View, Text, FlatList, Button } from 'react-native';
-import styles from '../styles/styles';
+import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
 import BookUpload from './BookUpload';
-import Book from './Book';
-import UploadFile from './UploadFile';
 import { connect } from 'react-redux';
 import BookPreview from './BookPreview';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    padding: 10,
+  },
+});
+
 class MyBooks extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    const {state} = navigation;
+    return {
+      title: 'My Books',
+    };
+  };
   render() {
     return (
       <View style={styles.container}>
-      <Text>Welcome to My Books!</Text>
+      <Text style={styles.title}>Welcome to My Books!</Text>
       <FlatList
         data={this.props.books}
         renderItem={({item}) => <BookPreview book={item}/>}/>
