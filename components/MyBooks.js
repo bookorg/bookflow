@@ -3,37 +3,28 @@ import { View, Text, FlatList } from 'react-native';
 import styles from '../styles/styles';
 import BookUpload from './BookUpload';
 import Book from './Book';
+import UploadFile from './UploadFile';
+import { connect } from 'react-redux';
+import BookPreview from './BookPreview';
 
-const data = [
-  {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-  },
-  {
-    title: 'Burma',
-    author: 'Benedict Rogers',
-  },
-  {
-    title: 'Thinking',
-    author: 'John Brockman',
-  },
-  {
-    title: 'The Alchemist',
-    author: 'Paulo Coelho',
-  },
-  {
-    title: 'The Innovator\'s Method',
-    author: 'Nathan Furr, Jeff Dyer',
-  },
-]
+class MyBooks extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+      <Text>Welcome to My Books!</Text>
+      <FlatList 
+        data={this.props.users[0].books}
+        renderItem={({item}) => <BookPreview book={item}/>}/>
+      
+      <UploadFile />
+      </View>
+    )
+  }
+}
 
-export default MyBooks = () => (
-  <View style={styles.container}>
-    <Text>Welcome to My Books!</Text>
-    <FlatList 
-      data={data}
-      renderItem={({item}) => <Book details={item}/>}/>
-    <BookUpload />
-  </View>
-)
+const mapStateToProps = state => ({
+  users: state.users.users
+});
+
+export default connect(mapStateToProps)(MyBooks) // export the connected version of your component
 

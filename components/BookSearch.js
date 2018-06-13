@@ -12,7 +12,7 @@ class BookSearch extends React.Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=search+dogs');
+    const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=search+cat+dog');
     const data = await response.json();
     const { items } = data;
     this.setState({

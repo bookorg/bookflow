@@ -9,6 +9,7 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bookEntry: {
+    flex: 1,
     padding: 10,
     backgroundColor: '#eff',
   }
