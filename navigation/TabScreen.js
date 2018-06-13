@@ -4,14 +4,19 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MyBooks from '../components/MyBooks.js';
 import MapScreen from '../components/MapScreen.js';
 import BookDetail from '../components/BookDetail.js';
-
+import NewBook from '../components/NewBook.js';
 const MapNavigator = createStackNavigator({
   Map: { screen: MapScreen },
   BookDetail: { screen: BookDetail },
 })
 
+const BookNavigator = createStackNavigator({
+  MyBooks: { screen: MyBooks},
+  NewBook: { screen: NewBook },
+})
+
 const Tabs = {
-  MyBooks: MyBooks,
+  MyBooks: BookNavigator,
   Map: MapNavigator,
 }
 

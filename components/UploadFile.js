@@ -166,8 +166,8 @@ async function uploadImageAsync(uri) {
   // if (Constants.isDevice) {
   //   apiUrl = `https://your-ngrok-subdomain.ngrok.io/upload`;
   // } else {
-    // apiUrl = `http://54.169.130.62:3000/upload`
-    apiUrl = `http://localhost:3000/upload`
+    apiUrl = `http://54.169.130.62:3000/upload`
+    // apiUrl = `http://localhost:3000/upload`
   // }
 
   let uriParts = uri.split('.');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Button } from 'react-native';
 import styles from '../styles/styles';
 import BookUpload from './BookUpload';
 import Book from './Book';
@@ -12,18 +12,18 @@ class MyBooks extends React.Component {
     return (
       <View style={styles.container}>
       <Text>Welcome to My Books!</Text>
-      <FlatList 
-        data={this.props.users[0].books}
+      <FlatList
+        data={this.props.books}
         renderItem={({item}) => <BookPreview book={item}/>}/>
-      
-      <UploadFile />
+      <Button title='Create new book' onPress={() => this.props.navigation.navigate('NewBook')}></Button>
+      {/* <UploadFile /> */}
       </View>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  users: state.users.users
+  books: state.users.users[0].books
 });
 
 export default connect(mapStateToProps)(MyBooks) // export the connected version of your component

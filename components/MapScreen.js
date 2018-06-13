@@ -6,6 +6,7 @@ import UserPreview from './UserPreview';
 
 class MapScreen extends React.Component {
   render() {
+    
     return (
       <MapView
         style={{ flex: 1 }}
