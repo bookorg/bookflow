@@ -35,6 +35,8 @@ const TabConfig = {
         iconName = `shopping-basket`;
       } else if (routeName === 'Upload') {
         iconName = `cloud-upload`;
+      } else if (routeName == 'Map') {
+        iconName= 'map'
       }
 
       return <Icon name={iconName} size={20} color={tintColor} />;

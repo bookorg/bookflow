@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
+import { jeremy } from './data/users/jeremy';
+
+const jeremyData = jeremy;
 
 
 const initialState = {
   loading: false,
+  nbBooks: 4,
   users: [
     {
       id: 1,
@@ -57,7 +61,8 @@ const initialState = {
           yearReleased: 2015
         }
       ]
-    }
+    },
+    jeremyData,
   ]
 }
 
@@ -67,10 +72,17 @@ const userReducer = (state = initialState, action) => {
       const obj = Object.assign(state.users[0].books, {});
       lastItem = Object.keys(obj)[Object.keys(obj).length-1];
       lastId = state.users[0].books[lastItem].id;
-      const newState = Object.assign(state, {});
+      const newState = Object.assign({}, state);
       newBook = Object.assign(action.book, {});
       newBook.id = lastId + 1;
       newState.users[0].books = newState.users[0].books.concat(newBook);
+      return newState;
+    }
+    case 'DELETE_BOOK': {
+      const newState = Object.assign({}, state);
+      const newUsers = Object.assign([], state.users);
+      newState.users = newUsers;
+      newState.users[0].books = newState.users[0].books.filter(b => b.id !== action.bookId);
       return newState;
     }
   }

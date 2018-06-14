@@ -2,42 +2,44 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Linking } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TouchableHighlight } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import BookDetail from './BookDetail';
 import BookPreview from './BookPreview';
+import Communications from 'react-native-communications';
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    phoneNumberText: {
+        color: 'blue',
+    },
     text: {color: 'black', fontSize: 12}
 })
  
 class UserPreview extends React.Component {
-    _handlePress = () => {
-        Linking.openURL('sms:' + this.props.user.phoneNumber);
-        this.props.onPress && this.props.onPress();
-    }
   render() {
       return (
         <View style={styles.container}>
             <Text style={styles.text}>{this.props.user.username}</Text> 
-            <Text style={styles.text} 
-                // onPress={this._handlePress()}
-                //TODO implement send sms onPress
-            >{this.props.user.phoneNumber}</Text> 
+            <TouchableOpacity onPress={() => Communications.text(this.props.user.phoneNumber)}>
+                <Text style={styles.phoneNumberText}>
+                    {this.props.user.phoneNumber}
+                </Text> 
+            </TouchableOpacity>
             <Text style={styles.text}>-----------------</Text> 
 
-        {this.props.user.books.map((book) => {
+        {this.props.user.books.length > 0 ? this.props.user.books.map((book) => {
             return (
-            <TouchableHighlight
+            <TouchableOpacity
                 key={book.id}
                 onPress={() => this.props.navigation.navigate('BookDetail', { detail: book })}
             >
                 <BookPreview book={book} />
                 
-            </TouchableHighlight>)
-        })}
+            </TouchableOpacity>)
+        }) : <Text>No books added yet!</Text>}
         </View>
       )
   }

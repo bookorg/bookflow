@@ -7,8 +7,7 @@ import BookPreview from './BookPreview';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
   title: {
     fontWeight: 'bold',
@@ -22,25 +21,41 @@ class MyBooks extends React.Component {
     const {state} = navigation;
     return {
       title: 'My Books',
+      headerLeft: null
     };
   };
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.title}>Welcome to My Books!</Text>
-      <FlatList
-        data={this.props.books}
-        renderItem={({item}) => <BookPreview book={item}/>}/>
-      <Button title='Create new book' onPress={() => this.props.navigation.navigate('NewBook')}></Button>
-      {/* <UploadFile /> */}
+        <FlatList
+          data={this.props.books}
+          renderItem={({item}) => 
+          <View style={{ flexDirection: 'row' }}>
+            <BookPreview book={item}/>
+            <View style={{ justifyContent: 'center' }} >
+              <Button title="🗑" onPress={() => this.props.deleteBook(item.id)} /> 
+            </View>
+          </View>
+          }
+          
+        />
+        <Button title={`✚ Add New Book`} onPress={() => this.props.navigation.navigate('NewBook')}></Button>
+        {/* <UploadFile /> */}
       </View>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  books: state.users.users[0].books
+  books: state.users.users[0].books,
 });
 
-export default connect(mapStateToProps)(MyBooks) // export the connected version of your component
+const mapDispatchToProps = dispatch => ({
+  deleteBook: (bookId) => dispatch({
+    type: 'DELETE_BOOK',
+    bookId,
+  })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyBooks) // export the connected version of your component
 

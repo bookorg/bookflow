@@ -24,8 +24,8 @@ class MapScreen extends React.Component {
         initialRegion={{
           latitude: 10.762622,
           longitude: 106.660172,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421
+          latitudeDelta: 0.122,
+          longitudeDelta: 0.1421
         }}
       >
         {this.props.users.map((user, index) => (
