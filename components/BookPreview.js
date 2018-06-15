@@ -35,6 +35,9 @@ const getQualityString = (quality) => {
     case 1: return 'Low';
     case 2: return 'Medium';
     case 3: return 'High';
+    case '1': return 'Low';
+    case '2': return 'Medium';
+    case '3': return 'High';
   }
 }
 
